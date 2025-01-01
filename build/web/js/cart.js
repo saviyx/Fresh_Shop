@@ -11,10 +11,10 @@ async  function loadCartItems() {
 
         if (json.length == 0) {
 
-        swal("Opss!","Cart is Empty", "error");
+            swal("Opss!", "Cart is Empty", "error");
 
 
-            window.location = "index.html";
+            
 
         } else {
             let cartItemContainer = document.getElementById("cart-item-container");
@@ -31,7 +31,7 @@ async  function loadCartItems() {
 
                 let cartItemRowClone = cartItemRow.cloneNode(true);
                 cartItemRowClone.querySelector("#cart-item-a").href = "single-product.html?id=" + item.product.id;
-                cartItemRowClone.querySelector("#cart-item-image").src = "product-images/" + item.product.id + "/"+ item.product.id +"image1.png";
+                cartItemRowClone.querySelector("#cart-item-image").src = "product-images/" + item.product.id + "/" + item.product.id + "image1.png";
                 cartItemRowClone.querySelector("#cart-item-title").innerHTML = item.product.title;
                 cartItemRowClone.querySelector("#cart-item-price").innerHTML = new Intl.NumberFormat(
                         "en-US",
@@ -49,22 +49,47 @@ async  function loadCartItems() {
                         }
 
                 ).format((itemSubTotal));
+                cartItemRowClone.querySelector("#remove").addEventListener("click", (e) => {
+                    removeItem(item.product.id);
+                });
                 cartItemContainer.appendChild(cartItemRowClone);
             });
-            document.getElementById("cart-total-qty").innerHTML=totalQty;
+            document.getElementById("cart-total-qty").innerHTML = totalQty;
             document.getElementById("cart-total").innerHTML = new Intl.NumberFormat(
-                        "en-US",
-                        {
-                            minimumFractionDigits: 2
-                        }
+                    "en-US",
+                    {
+                        minimumFractionDigits: 2
+                    }
 
-                ).format((total));
+            ).format((total));
+
+
         }
     } else {
-        
-         swal("Opss!","unable to process your request", "error");
+
+        swal("Opss!", "unable to process your request", "error");
 
 
         }
+
+}
+
+async function removeItem(id) {
+
+    const response = await fetch(
+            `RemoveItems?id=${id}`
+            );
+    
+    if (response.ok) {
+        let data = await response.json();
+        if (data.success) {
+              swal("Deleted", "Successfuly removed item from cart", "success");
+              window.location.reload();
+        }else{
+            swal("Opss!", data.content, "error");
+        }
+    }else{
+        swal("Opss!", "unable to process your request", "error");
+    }
 
 }

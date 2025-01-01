@@ -12,9 +12,9 @@ async function loadFeatures() {
         const json = await response.json();
 
         const categoryList = json.categoryList;
-      
+
         const weightList = json.weightList;
-        
+
 
         loadSelect("categorySelect", categoryList, "name");
         loadSelect("weightSelect", weightList, "weight");
@@ -22,7 +22,7 @@ async function loadFeatures() {
 
     } else {
 
-         swal("Oops!","Loading Failed!", "error");
+        swal("Oops!", "Loading Failed!", "error");
     }
 }
 
@@ -78,11 +78,11 @@ async function productListing() {
     if (response.ok) {
         const json = await response.json();
         const popup = Notification();
-       const messageTag = document.getElementById("message");
+        const messageTag = document.getElementById("message");
         if (json.success) {
 
-            categorySelectTag.value = 0;           
-            weightSelectTag.value = 0;           
+            categorySelectTag.value = 0;
+            weightSelectTag.value = 0;
             titleTag.value = "";
             descriptionTag.value = "";
             priceTag.value = "";
@@ -92,15 +92,52 @@ async function productListing() {
             image3Tag.value = null;
 
 
-            swal("Done",json.content, "success");
-            
+            swal("Done", json.content, "success");
+
         } else {
-            swal("Oops!", json.content , "error");
-            
+            swal("Oops!", json.content, "error");
+
         }
     } else {
-        swal("Oops!","Please try again later!", "error");
+        swal("Oops!", "Please try again later!", "error");
 
         }
 }
 
+async function logout() {
+    
+    
+
+    Swal.fire({
+        text: "Are You want to Logout!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        confirmButtonText: "Yes",
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            let res = await fetch(`Logout`);
+
+            if (res.ok) {
+                let data = await res.json();
+               
+                if (data.success) {
+                    window.location.href = "login.html";
+                } else {
+                    Swal.fire({
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonColor: "#d33",
+                    });
+                }
+            } else {
+                Swal.fire({
+                    text: "Something went wrong",
+                    icon: "error",
+                    cofirmButtonColor: "#d33",
+                });
+            }
+        }
+    });
+
+}

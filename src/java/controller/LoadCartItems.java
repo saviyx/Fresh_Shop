@@ -27,7 +27,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author User
+ * @author savindu umantha
  */
 @WebServlet(name = "LoadCartItems", urlPatterns = {"/LoadCartItems"})
 public class LoadCartItems extends HttpServlet {
@@ -41,7 +41,7 @@ public class LoadCartItems extends HttpServlet {
         
         Session session = HibernateUtil.getSessionFactory().openSession();
         
-//DB ekm gathath session ekem gathath Cart_DTO ekkta thmi dagnne     ADAPTEER  EKK WAGE
+      
         ArrayList<Cart_DTO> cart_DTO_List = new ArrayList<>();
 
         try {

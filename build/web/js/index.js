@@ -36,7 +36,7 @@ function loadproduct(idname, list, property) {
                                                         <div class="type-lb">
                                                             <p class="sale">Sale</p>
                                                         </div>
-                                                        <img src="product-images/${item.id}/${item.id}image1.png" alt="Image">
+                                                        <img class="pvi" src="product-images/${item.id}/${item.id}image1.png" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="single-product.html?id=${item.id}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

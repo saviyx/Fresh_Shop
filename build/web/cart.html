@@ -37,7 +37,7 @@
 
     <body onload="loadCartItems();">
         <!-- Start Main Top -->
-        <div class="main-top">
+    <div class="main-top">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -53,18 +53,15 @@
                         </div>
                         <div class="our-link">
                             <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
+                                <li><a href="my-account.html"><i class="fa fa-user s_color"></i> My Account</a></li>
                                 <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
                                 <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Register Here</option>
-                                <option>Sign In</option>
-                            </select>
+                        <div class="login-box selectpicker show-tick form-control" data-placeholder="Sign In">						
+                            <a href="login.html">Sign In</a>						
                         </div>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
@@ -119,19 +116,10 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.html">Sidebar Shop</a></li>
-                                    <li><a href="single-product.html">Shop Detail</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                </ul>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                            
                             <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                         </ul>
@@ -142,11 +130,13 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li class="side-menu"><a href="#">
+                            <li class="side-menu">
+                                <a href="cart.html">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">3</span>
                                     <p>My Cart</p>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -233,23 +223,23 @@
                                     <tr id="cart-item-row">
                                         <td class="thumbnail-img">
                                             <a id="cart-item-a" href="#">
-                                                <img id="cart-item-image" class="img-fluid" src="images/img-pro-01.jpg" alt="" />
+                                                <img id="cart-item-image" class="img-fluid" src="" alt="" />
                                             </a>
                                         </td>
                                         <td class="name-pr">
                                             <a  href="#" id="cart-item-title">
-                                                Lorem ipsum dolor sit amet
+                                               
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <span>Rs. </span><span id="cart-item-price">100.00</span>
+                                            <span>Rs. </span><span id="cart-item-price"></span>
                                         </td>
-                                        <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text" id="cart-item-quantity"></td>
+                                        <td class="quantity-box"><input type="number" size="4" value="0" min="0" step="1" class="c-input-text qty text" id="cart-item-quantity"></td>
                                         <td class="total-pr">
-                                           <span>Rs. </span><span id="cart-item-subtotal">100.00</span>
+                                           <span>Rs. </span><span id="cart-item-subtotal"></span>
                                         </td>
                                         <td class="remove-pr">
-                                            <a href="#">
+                                            <a id="remove">
                                                 <i class="fas fa-times"></i>
                                             </a>
                                         </td>
@@ -271,13 +261,10 @@
                             <h3>Order summary</h3>
                             <div class="d-flex">
                                 <h4>Quantity</h4>
-                                <div class="ml-auto font-weight-bold" id="cart-total-qty"> 1 </div>
+                                <div class="ml-auto font-weight-bold" id="cart-total-qty"> 0 </div>
                             </div>
-                            <div class="d-flex">
-                                <h4>Total</h4>
-                                <div class="ml-auto font-weight-bold"><span>Rs. </span> <span id="cart-total">100.00</span> </div>
-                            </div>
-                            <hr class="my-1">
+                         
+
                             <div class="d-flex">
                                 <h4>Discount</h4>
                                 <div class="ml-auto font-weight-bold"> Rs 0 </div>
@@ -290,7 +277,7 @@
                             <hr>
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5"> <span>Rs. </span> <span id="cart-grand-total">100.00</span> </div>
+                                 <div class="ml-auto font-weight-bold"><span>Rs. </span> <span id="cart-total">0.00</span> </div>
                             </div>
                             <hr> </div>
                     </div>

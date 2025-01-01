@@ -36,7 +36,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author User
+ * @author savindu umantha
  */
 @WebServlet(name = "Checkout", urlPatterns = {"/Checkout"})
 public class Checkout extends HttpServlet {
@@ -196,11 +196,7 @@ public class Checkout extends HttpServlet {
             for (Cart cartItem : cartList) {
                 //calculate amount
                 amount += cartItem.getQty() * cartItem.getProduct().getPrice();
-                if (address.getCity().getId() == 1) {
-                    amount += 1000;
-                } else {
-                    amount += 2500;
-                }
+                
                 //calculated amount 
 
                 //Get Items Details
@@ -229,10 +225,10 @@ public class Checkout extends HttpServlet {
             transaction.commit();
 
             //START :set payment data
-            String merchant_id="1225574";
+            String merchant_id="1229065";
             String formatedAmount= new DecimalFormat("0.00").format(amount);
             String currency="LKR";
-            String merchantSecret="MTc3NTc2ODE5OTEwNTY0OTk4OTUzMTI4NzgyNTI4Mzg0MjY2OTE1NA==";
+            String merchantSecret="MjM0MTc1OTc1ODE5NzA3NTk1MzcxMjQ1MzY0Mjg0MzQ3OTE0NTI=";
             String merchantSecretMd5Hash=PayHere.genaratemd5(merchantSecret);
             
             JsonObject payhere = new JsonObject();
@@ -245,9 +241,9 @@ public class Checkout extends HttpServlet {
             payhere.addProperty("first_name", user.getFirst_name());
             payhere.addProperty("last_name", user.getLast_name());
             payhere.addProperty("email", user.getEmail());
-            payhere.addProperty("phone", "0765906974");
-            payhere.addProperty("address", "390/14 Hettigedara Maspotha");
-            payhere.addProperty("city", "Kurunegla");
+            payhere.addProperty("phone", "0771077618");
+            payhere.addProperty("address", "No:72, Aragama, Gokarella");
+            payhere.addProperty("city", "Kurunegala");
             payhere.addProperty("country", "Sri Lanka");
             payhere.addProperty("order_id", String.valueOf(order_id));
             payhere.addProperty("items", items);

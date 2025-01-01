@@ -7,11 +7,9 @@ package dto;
 import entity.Product;
 import java.io.Serializable;
 
-/**
- *
- * @author User
- */
+
 public class Cart_DTO implements Serializable{
+    
     private Product product;
     private int qty;
 

@@ -35,9 +35,9 @@
 
     </head>
 
-    <body onload="homedta()">
+    <body onload="loadfilteringdata()">
         <!-- Start Main Top -->
-        <div class="main-top">
+         <div class="main-top">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -53,18 +53,15 @@
                         </div>
                         <div class="our-link">
                             <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
+                                <li><a href="my-account.html"><i class="fa fa-user s_color"></i> My Account</a></li>
                                 <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
                                 <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Register Here</option>
-                                <option>Sign In</option>
-                            </select>
+                        <div class="login-box selectpicker show-tick form-control" data-placeholder="Sign In">						
+                            <a href="login.html">Sign In</a>						
                         </div>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
@@ -119,19 +116,10 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.html">Sidebar Shop</a></li>
-                                    <li><a href="single-product.html">Shop Detail</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                </ul>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                            
                             <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                         </ul>
@@ -142,11 +130,13 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li class="side-menu"><a href="#">
+                            <li class="side-menu">
+                                <a href="cart.html">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">3</span>
                                     <p>My Cart</p>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -222,12 +212,12 @@
                                 <div class="col-12 col-sm-8 text-center text-sm-left">
                                     <div class="toolbar-sorter-right">
                                         <span>Sort by </span>
-                                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                            <option data-display="Select">Nothing</option>
-                                            <option value="1">Popularity</option>
-                                            <option value="2">High Price → High Price</option>
-                                            <option value="3">Low Price → High Price</option>
-                                            <option value="4">Best Selling</option>
+                                        <select id="sortSelect" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                                            <option value="nothing">Nothing</option>
+                                            <option value="newToOld">New → Old</option>
+                                            <option value="oldToNew">Old → New</option>
+                                            <option value="lowToHigh">Low Price → High Price</option>
+                                            <option value="highToLow">High Price → Low Price</option>
                                         </select>
                                     </div>
                                     <p>Showing all 4 results</p>
@@ -247,8 +237,17 @@
                             <div class="product-categorie-box">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                        <div class="row" id="home2">
-                                           
+                                        <div class="row" id="productCardView">
+
+                                        </div>
+                                        <div class="pagination">
+                                            <ul id="paginationView">
+                                                <li class="next" id="paginationPreviousBtn"><a href="#" onclick="goToPreviousPage()"><i class="fa fa-caret-left" aria-hidden="true"></i></a></li>
+                                                <!--<li class="active"><a href="#">1</a></li>-->
+                                                <li id="paginationNumberBtn"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li class="next" id="paginationNextBtn"><a href="#" onclick="goToNextPage()"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">
@@ -365,36 +364,9 @@
                                 <div class="title-left">
                                     <h3>Categories</h3>
                                 </div>
-                                <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
-                                    <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Fruits & Drinks <small class="text-muted">(100)</small>
-                                        </a>
-                                        <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                            <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action active">Fruits 1 <small class="text-muted">(50)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small class="text-muted">(20)</small></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables 
-                                            <small class="text-muted">(50)</small>
-                                        </a>
-                                        <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                            <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action">Vegetables 1 <small class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Vegetables 2 <small class="text-muted">(20)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Vegetables 3 <small class="text-muted">(20)</small></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery  <small class="text-muted">(150) </small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small class="text-muted">(11)</small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small class="text-muted">(22)</small></a>
-                                </div>
+                                <select id="categorySelect" class="form-control" data-placeholder="$ USD">
+                                    <option value="0">Nothing</option>
+                                </select>
                             </div>
                             <div class="filter-price-left">
                                 <div class="title-left">
@@ -404,7 +376,7 @@
                                     <div id="slider-range"></div>
                                     <p>
                                         <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                        <button class="btn hvr-hover" type="submit">Filter</button>
+                                        <button class="btn hvr-hover" onclick="filterResults()">Filter</button>
                                     </p>
                                 </div>
                             </div>
@@ -606,7 +578,7 @@
         <script src="js/jquery.superslides.min.js"></script>
         <script src="js/bootstrap-select.js"></script>
         <script src="js/inewsticker.js"></script>
-        <script src="js/bootsnav.js."></script>
+        <script src="js/bootsnav.js"></script>
         <script src="js/images-loded.min.js"></script>
         <script src="js/isotope.min.js"></script>
         <script src="js/owl.carousel.min.js"></script>
@@ -616,8 +588,7 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/single-product.js"></script>
+        <script src="js/advancedSearch.js"></script>
     </body>
 
 </html>

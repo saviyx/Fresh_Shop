@@ -5,17 +5,8 @@
 package controller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import dto.Response_DTO;
 import entity.Category;
-//import entity.Color;
-
-//import entity.Model;
-//import entity.ProductCondition;
-
-//import entity.Storage;
-import entity.User;
 import entity.Weight;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,36 +23,35 @@ import org.hibernate.criterion.Order;
 
 /**
  *
- * @author User
+ * @author savindu umantha
  */
 @WebServlet(name = "LoadFeatures", urlPatterns = {"/LoadFeatures"})
 public class LoadFeatures extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+       
         Gson gson = new Gson();
-
+        
         Session session = HibernateUtil.getSessionFactory().openSession();
-
+        
         Criteria criteria1 = session.createCriteria(Category.class);
         criteria1.addOrder(Order.asc("name"));
         List<Category> categoryList = criteria1.list();
-
+        
         Criteria criteria2 = session.createCriteria(Weight.class);
         criteria2.addOrder(Order.asc("weight"));
         List<Weight> weightList = criteria2.list();
-
-       
-
+        
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("categoryList", gson.toJsonTree(categoryList));
         jsonObject.add("weightList", gson.toJsonTree(weightList));
-       
+        
         response.setContentType("application/json");
         response.getWriter().write(gson.toJson(jsonObject));
         session.close();
-
+        
     }
 
+   
 }

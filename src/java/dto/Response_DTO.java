@@ -7,10 +7,7 @@ package dto;
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 
-/**
- *
- * @author User
- */
+
 public class Response_DTO implements Serializable {
 @Expose
     private boolean success;

@@ -23,7 +23,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author User
+ * @author savindu umantha
  */
 @WebServlet(name = "Verification", urlPatterns = {"/Verification"})
 public class Verification extends HttpServlet {
